@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Position</title>
+	<link rel="stylesheet" type="text/css" href="CSS.css">
+</head>
+<body>
+
+<!--
+再谈position:
+	static: 默认值，即没有定位，元素出现在正常的文档流中。
+
+	fixed: 元素位置相对于浏览器窗口是固定位置，即使窗口滚动也不会动，与文档流无关，因
+此不占据空间。
+
+	relative: 相对定位元素的定位是相对于其正常位置。可以移动的相对定位元素的内容和相互
+重叠的元素，它原本所占的空间并不会改变。
+	absolute: 绝对定位的元素的位置相对于最近的已经定位的父元素，如果没有，则它的位置
+相对于<html>。绝对定位的元素和其它元素重叠。定位元素位置与文档流无关，因此不占据空间。
+
+ -->
+	<div class="box1">Box1
+<!--		<div class="box2">Box2</div> -->
+	</div>
+	
+	<div class="box2">Box2</div>
+	
+</body>
+</html>
