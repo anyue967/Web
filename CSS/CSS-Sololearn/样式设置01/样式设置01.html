@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>样式设置 引用</title>
+<!--             第一种 设置样式CSS方法   -->
+	<style>
+		p{
+			color: white;
+			background-color: gray;
+		}
+	</style>
+
+<!--              第二种 调用CSS文件      -->
+    <link rel="stylesheet" type="text/css" href="Document01.css">
+
+</head>
+<body>
+	   <p>This is my first paragraph.</p>
+	   <p>This is my second paragraph.</p>
+	   <p>This is my third paragraph.</p>
+
+	<div id="intro">                             <!--id  # 标识-->
+		<P>This paragraph is in the inro section.</P>
+	</div>
+	<p>This paragraph is not in the intro section.</p>
+
+	<div>
+		<p class="first">This is a paragraph.</p>
+		<p>This is the second paragraph.</p>
+	</div>                                       <!--class  . 标识-->
+	<p class="first">This is not in the intro section.</p>
+	<p>The section paragraph is not in the intro section.</p>
+
+	<div id="erJ">
+		<p class="second">This is a <em>paragraph.</em></p>
+		<p>This is the second paragraph.</p>
+	</div>
+	<div>
+		<p class="second">This is not in the erJ section.</p>
+		<p>The second  paragraph is not in the erJ second.</p>
+	</div>
+</body>
+</html>

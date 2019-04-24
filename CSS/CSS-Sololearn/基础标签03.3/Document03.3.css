@@ -1,0 +1,52 @@
+span{
+	display: block;
+	/*display: inline;*/
+}
+h1.one{
+	display: none;
+}
+div.hidden{
+	visibility: hidden;
+	/*display: none;*/
+}
+p.pOne{
+	width: 350px;
+	border: 1px black solid;
+	position: auto;
+	/*position: fixed;*/
+}
+p.pOne span{
+	background: green;
+	color: white;
+	/*position: relative;*/
+	top: 150px;
+	left: 50px;
+}
+p.position_static{
+	position: static;
+	top: 10px;
+	right: 5px;
+	color: red;
+}
+img{
+	float: right;
+}
+p.Blue{
+	z-index: 3;
+	position: relative;
+	background-color: #8EC4D0;
+	margin-bottom: 15px;
+	width: 120px;
+	height: 120px;
+	color: #FFF;
+}
+p.Red{
+	z-index: 2;
+	background-color: #FF4D4D;
+	/*position: relative;*/
+	width: 120px;
+	height: 120px;
+	color: #FFF;
+	margin-top: -50px;
+	margin-left: 50px;
+}
