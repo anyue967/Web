@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>基础02</title>
+</head>
+<body bgcolor="">
+	<ol>					<!--ol 有序-->
+		<li> Red</li>
+		<li> Blue</li>
+		<li> Green</li>
+	</ol>
+	<ul>					<!--ul 无序-->
+		<li> Red</li>
+		<li> Blue</li>
+		<li> Green</li>
+	</ul>
+	<ul>
+		<li>
+			<a href="httpd://www.baidu.com">AAAAA</a>
+		</li>
+		<li> B</li>
+
+	</ul>
+	<hr color="black" />
+
+	<table border="2px">
+		<tr>						<!--tr   行-->  <!-- 第1行-->
+			<td bgcolor="red"> Red</td>
+			<td> Blue</td>			<!--td   列-->   <!-- 第1行第二列-->
+			<td> Green</td>
+		</tr>
+		<tr>
+			<td> Yellow<br /></td>
+			<td colspan="2"> Orange<br /></td>  <!--colspan="2"  横跨2列-->
+		</tr>
+	</table>
+	<hr color="black" />
+
+	<h1> Headline</h1>
+	<div style="background-color:green; color:white; padding:20px;">
+		<p>
+			Some paragraph text goes here.
+		</p>
+		<p>
+			Another paragraph goes here.
+		</p>
+	</div>            <!--div h1 form li ol ul p pre table  块标签-->
+
+    <h2>
+    	Some<span style="color:red"> Important Message</span>
+    	<!--span b a strong img input em 行标签-->
+    </h2>
+    <hr color="black"/>
+
+    <form action="#" method="GET/POST">
+    	<input type="text" name="username" /><br />
+    	<input type="password" name="password" /><br />
+		<input type="submit" value="Submit" /><br />
+
+    	<input type="radio" name="gender" value="1" /> Male<br />
+    	<input type="radio" name="gender" value="female" /> Female<br />
+    	           <!--radio 单选框-->
+    	            <!-- checkbox 复选框-->
+    	<input type="checkbox" name="gender" value="male"  /> Male<br />
+    	<input type="checkbox" name="gender" value="2" />Female<br />
+    </form>
+<hr color="black" />
+
+    <h1>
+    	<font color="#000000"> White headline</font>
+    </h1>   
+<hr color="black" />
+
+    <frameset cols="25%,50%,25%">
+    	<frame src="a.html"></frame>
+    	<frame src="b.html"></frame>
+    	<frame src="c.html"></frame>
+    	<noframes> Frames not supported!</noframes> <!--frame 不被支持HTML5-->
+    </frameset>
+</body>
+</html>
