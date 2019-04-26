@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width = device-width,initial-scale=1.0">
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<meta charset="utf-8">
+	<title>Bootstrap 示例</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bootstrap 初体验</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">视频 <span class="sr-only">(current)</span></a></li>
+        <!-- <li><a href="#">Link</a></li> -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">资料 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">PPT</a></li>
+            <li><a href="#">笔记</a></li>
+            <li><a href="#">资源</a></li>
+            <!-- <li role="separator" class="divider"></li> -->
+            <!-- <li><a href="#">Separated link</a></li> -->
+            <!-- <li role="separator" class="divider"></li> -->
+            <!-- <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
+        <li><a href="#">作业</a></li>
+        <li><a href="#">讨论</a></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+      </form>	<!--导航条组件-->
+<!--
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+-->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="jumbotron"> <!--巨幕组件-->
+		  		<h1>Bootstrap</h1>
+		  		<p>Bootstrap，来自 Twitter，是目前最受欢迎的前端框架。
+		  		Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，
+		  		使得 Web 开发更加快捷。本教程将向您讲解 Bootstrap 框架的基础，通过学习这些内容，您将可以轻松地创建 Web 项目。
+		  	    教程被分为 Bootstrap 基本结构、Bootstrap CSS、Bootstrap 
+		  	    布局组件和 Bootstrap 插件几个部分。每个部分都包含了与该
+		  	    主题相关的简单有用的实例。</p>
+		  		<p><a class="btn btn-primary btn-lg" href="#" role="button">加入学习</a></p>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<ul class="list-group">	<!--列表组组件-->
+  				<li class="list-group-item">最新公告</li>
+  				<li class="list-group-item">最新讨论</li>
+  				<li class="list-group-item">最新作业</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">	<!--详细内容开始-->
+			<div class="col-md-7 col-lg-5">
+				<h2>HTML</h2>
+				<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consequuntur repellendus impedit obcaecati, fuga veritatis qui ea perspiciatis. Autem perferendis quasi porro officia neque beatae 
+				in recusandae iusto voluptates nisi.</P>
+				<p><a class="btn btn-default" href="#">开始学习</a></p>
+			</div>
+			<div class="col-md-7 col-lg-5">
+				<h2>HTML5</h2>
+				<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consequuntur repellendus impedit obcaecati, fuga veritatis qui ea perspiciatis. Autem perferendis quasi porro officia neque beatae 
+				in recusandae iusto voluptates nisi.</P>
+				<p><a class="btn btn-default" href="#">开始学习</a></p>
+			</div>
+			<div class="col-md-7 col-lg-5">
+				<h2>CSS</h2>
+				<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consequuntur repellendus impedit obcaecati, fuga veritatis qui ea perspiciatis. Autem perferendis quasi porro officia neque beatae 
+				in recusandae iusto voluptates nisi.</P>
+				<p><a class="btn btn-default" href="#">开始学习</a></p>
+			</div>
+			<div class="col-md-7 col-lg-5">
+				<h2>CSS3</h2>
+				<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consequuntur repellendus impedit obcaecati, fuga veritatis qui ea perspiciatis. Autem perferendis quasi porro officia neque beatae 
+				in recusandae iusto voluptates nisi.</P>
+				<p><a class="btn btn-default" href="#">开始学习</a></p>
+			</div>
+			<div class="col-md-7 col-lg-5">
+				<h2>Vue.js</h2>
+				<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consequuntur repellendus impedit obcaecati, fuga veritatis qui ea perspiciatis. Autem perferendis quasi porro officia neque beatae 
+				in recusandae iusto voluptates nisi.</P>
+				<p><a class="btn btn-default" href="#">开始学习</a></p>
+			</div>
+			<div class="col-md-7 col-lg-5">
+				<h2>Less</h2>
+				<P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consequuntur repellendus impedit obcaecati, fuga veritatis qui ea perspiciatis. Autem perferendis quasi porro officia neque beatae 
+				in recusandae iusto voluptates nisi.</P>
+				<p><a class="btn btn-default" href="#">开始学习</a></p>
+			</div>
+		</div>	<!--详细内容结束-->
+</div>
+</body>
+</html>
