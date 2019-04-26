@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>魔方</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<script type="text/javascript" src="Js/Js.js"></script>
+</head>
+<body>
+	<!-- 实现步骤：
+	1.实现正方体，html确定结构
+	2.每个面3x3上加入图片，css实现样式
+	3.加入对应动画， js实现动画 -->
+	<!-- 容器，div为块元素默认单独占一行-->
+	<div class="container">
+		<div class="box">
+			<div class="box-page top"><!--<span>上</span>--></div>
+			<div class="box-page bottom"><!--<span>下</span>--></div>
+			<div class="box-page left"><!--<span>左</span>--></div>
+			<div class="box-page right"><!--<span>右</span>--></div>
+			<div class="box-page front"><!--<span>前</span>--></div>
+			<div class="box-page after"><!--<span>后</span>--></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var arr = document.querySelectorAll(".box-page");
+// 遍历6个面中每一个面，每个面3x3
+for( var n = 0; n < arr.length; n++){
+ // 外层遍历循环行
+    for( var r = 0; r < 3; r++){
+        // 内层遍历循环列
+        for( var c =0; c < 3; c++){
+        // 创建div元素
+         var divs = document.createElement("div");
+        // box-sizing: border-box 消除border对宽高的影响
+        // background-color: red;
+        divs.style.cssText = "width: 100px; height: 100px; border: 2px solid #fff; \
+        box-sizing: border-box;  position: absolute; background-image: url(img/a"+n+".jpg); \
+        background-size: 300px 300px;";
+        // 加入创建元素
+        arr[n].appendChild(divs);
+
+        // 设置偏移属性
+        divs.style.left = c * 100 + "px";	// 依据列数计数
+        divs.style.top = r * 100 + "px";	// 依据行数计数
+        // 背景图像定位，即背景图像偏移实现
+        divs.style.backgroundPositionX = -c * 100 + "px";
+        divs.style.backgroundPositionY = -r * 100 + "px";
+        }
+    }
+}
+	</script>
+</body>
+</html>
