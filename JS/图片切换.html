@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片切换案例</title>
+	<style type="text/css">
+		body, form, input, p{
+			margin: 0px;
+			padding: 0px;
+		}
+		a{
+			text-decoration: none;
+		}
+		img{
+			border: none;
+		}
+		body{
+			background: #0e0e0e;
+		}
+		#wrap{
+			width: 419px;
+			height: 490px;
+			background: #ffffff;
+			margin: 64px auto;
+			padding:9px;
+		}
+		#top{
+			width: 420px;
+			height: 72px;
+			position: relative;
+			/*background: yellow;*/
+		}
+		#top form{
+			position: absolute;
+			/*定位对象为父级是具有relative或者absolute的父级，脱离文档流,使内嵌元素支持宽高，未设置由内容撑开*/
+			left: 137px;
+		}
+		#top input{
+			padding: 2px;
+			/*height: 60px;*/
+			margin-right: 14px;
+			font-size: 12px;
+		}
+		#top p{
+			/*position: relative;*/
+			position: absolute;
+			top: 40px;
+			left: 68px;
+		}
+		#box{
+			width: 400px;
+			height: 400px;
+			background: #c6c6c6;
+			padding: 10px;
+			position: relative; 
+		}
+		#box #p1{
+			width: 400px;
+			height: 30px;
+			background: #000000;
+			filter: (opacity(80));
+			opacity: 0.8;
+			color: #ffffff;
+			font-size: 10px;
+			line-height: 30px;
+			text-align: center;
+			position: absolute;
+			top: 10px;
+		}
+		#box #prev{
+			display: block;
+			width: 40px;
+			height: 40px;
+			background: #decec6;
+			position: absolute;
+			top: 45%;
+			left: 10px;
+			color: #5c981d;
+			font-size:18px; 
+			line-height:40px;
+			text-align:center; 
+			font-weight:bold;
+		}
+		#box #next{
+			display: block;
+			width: 40px;
+			height: 40px;
+			background: #decec6;
+			position: absolute;
+			top: 45%;
+			right: 10px;
+			color: #5c981d;
+			font-size:18px; 
+			line-height:40px;
+			text-align:center; 
+			font-weight:bold;
+		}
+		#box #prev:hover, #box #next:hover{
+			filter:(opacity(30));
+			opacity:0.3; 
+			background:#FF9101;
+		}
+		#box #p2{
+			width:400px;
+			height:30px; 
+			background:#000000; 
+			filter:(opacity(80));
+			opacity:0.8; 
+			color:#ffffff; 
+			font-size:10px; 
+			line-height:30px;
+			text-align:center;
+			position:absolute;
+			bottom:10px;
+		}
+		#box img{
+			width:400px; 
+			height:400px;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function () {
+			var oBtn = document.getElementsByTagName('input');
+			var oPrev = document.getElementById('prev');
+			var oNext = document.getElementById('next');
+			var oImg = document.getElementById('img1');
+			// 图片数量
+			var oP1 = document.getElementById('p1');
+			// 图片文字  
+			var oP2 = document.getElementById('p2');  
+			var arrUrl = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'];
+			var arrText = ['第一张图片', '第二张图片', '第三张图片', '第四张图片'];
+
+			oBtn[0].onclick = function () {
+				document.getElementsByName('p')[0].innerHTML = '图片可从最后一张跳转到第一张循环切换';
+			};
+			oBtn[1].onclick = function () {
+				document.getElementsByTagName('p')[0].innerHTML = '图片只能到最后一张\或只能到第一张切换';
+			};
+
+			var num = 0;
+			var onOff = true;
+
+			function fnTab() {
+				// body...
+				oP1.innerHTML = num + 1 + ' / ' + arrUrl.length;
+				oP2.innerHTML = arrText[num];
+				oImg.src = arrUrl[num];
+			}
+			fnTab();
+
+			// Prev 切换
+			oPrev.onclick = function () {
+				num--;
+				if(num == -1){
+					if(onOff){
+						num = arrUrl.length - 1;
+					}
+					else{
+						alert('这已经是第一张了，不能再往前了~~');
+						num = 0;
+					}
+				}
+				fnTab();
+			};
+
+			// Next 切换
+			oNext.onclick = function () {
+				num++;
+				if(num == arrUrl.length){
+					if(onOff){
+						num = 0;
+					}
+					else{
+						alert('已经到最后一张了~~');
+						num = arrText.length - 1;
+					}
+				}
+				fnTab();
+			};
+		};
+	</script>
+
+	<div id="wrap">
+		<div id="top">
+			<form action="javascript:;">
+				<input type="button" name="" value="循环切换">
+				<input type="button" name="" value="顺序切换">
+			</form>
+			<p>图片可从最后一张跳转到第一张循环切换</p>
+		</div>
+		<div id="box">
+			<p id="p1">图片数量加载中...</p>
+			<a href="javascript:;" id="prev">></a>
+			<a href="javascript:;" id="next"><</a>
+			<p id="p2">图片文字加载中...</p>
+			<img id="img1" src="">
+		</div>
+	</div>
+</body>
+</html>
