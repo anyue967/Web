@@ -132,16 +132,17 @@
 			var oP2 = document.getElementById('p2');  
 			var arrUrl = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'];
 			var arrText = ['第一张图片', '第二张图片', '第三张图片', '第四张图片'];
+			var num = 0;
+			var onOff = true;
 
 			oBtn[0].onclick = function () {
+				onOff = true;
 				document.getElementsByName('p')[0].innerHTML = '图片可从最后一张跳转到第一张循环切换';
 			};
 			oBtn[1].onclick = function () {
+				onOff = false;
 				document.getElementsByTagName('p')[0].innerHTML = '图片只能到最后一张\或只能到第一张切换';
 			};
-
-			var num = 0;
-			var onOff = true;
 
 			function fnTab() {
 				// body...
