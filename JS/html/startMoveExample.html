@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>startMoveExample</title>
+    <style>
+    #div1{ width: 200px; height: 200px; background: red; position: absolute; left: 0; top: 20px;}
+    </style>
+    <script src="startMove.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function(){
+        var oDiv = document.getElementById('div1');
+
+        oDiv.onclick = function(){
+            alert(this);    // [object HTMLDivElement]
+            startMove(this, {left: 500, top: 300, opacity:10}, {time:1500, type: 'buffer', end: function(){
+                alert(this);   // [object Object]
+            }});
+        };
+    };
+    </script>
+
+    <div id="div1"></div>
+</body>
+</html>
