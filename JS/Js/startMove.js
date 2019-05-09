@@ -1,6 +1,6 @@
 function getStyle(obj, name){
     return obj.currentStyle?obj.currentStyle[name]:getComputedStyle(obj, false)[name];
-
+    // 取属性值
 /*    if (obj.currentStyle) {
         return obj.currentStyle;
     }else{
@@ -20,8 +20,8 @@ function startMove(obj, json, options){
     var count=parseInt(options.time/30);
     var n=0;
     
-    var start={};
-    var dis={};
+    var start={};       // 定义JSON存放初始值
+    var dis={}; //定义JSON存放差值
     
     for(var name in json){
         if(name=='opacity'){
@@ -29,7 +29,7 @@ function startMove(obj, json, options){
         }else{
             start[name]=parseInt(getStyle(obj, name));
         };
-        dis[name]=json[name]-start[name];
+        dis[name]=json[name]-start[name];   // 目标值 - 初始值 = 速度
     };
     
     clearInterval(obj.timer);
