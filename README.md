@@ -30,15 +30,18 @@
 
 ### 再提 块标签与内联标签：
 + 块标签：
+  - ☞ 常见的块元素：`div, form, table, header, aside, section, article, figure, figcaption, h1~h6, nav, p, pre, blockqoute, canvas, ol, ul, dl`
   - ☞ 默认独占一行 
   - ☞ 没有宽度时，默认撑满一排
   - ☞ 支持所有css命令
 + 内联标签：
+  - ☞ 常见的内联元素：`span, a, img, label, input, select, textarea, br, i, em, strong, small, button, sub, sup, code`
   - ☞ 同排可以继续跟同类的标签
   - ☞ 内容撑开宽度
   - ☞ 不支持宽高
   - ☞ 不支持上下的margin和padding
-  - ☞ 代码换行被解析
+  - ☞ 代码换行被解析  
+[元素分类图示](./HTML/元素分类.png)
 
 
 

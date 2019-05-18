@@ -10,12 +10,132 @@
 	<script type="text/javascript" src="js/DD_belatedPNG_0.0.8a.js"></script>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script>
-		$(function(){
-			
-		});
+		
 	</script>
 </head>
 <body>
-	
+<!-- header start -->
+	<div id="header" class="gradient">
+		<p class="city">切换城市：
+			<a href="#" class="active">北京</a>
+			<a href="#">上海</a>
+			<a href="#">福州</a>
+			<a href="#">广州</a>
+			<a href="#">青岛</a>
+		</p>
+		<p class="link">
+			<a href="#" class="ico1">加盟100度</a>|
+			<a href="#" class="ico2">店铺管理</a>
+		</p>
+	</div>
+<!-- header end -->
+
+<!-- nav start -->
+	<div id="nav">
+		<ul class="nav_1">
+			<li><a href="#" class="bg1">美食</a></li>
+			<li><a href="#" class="bg2">夜店</a></li>
+			<li><a href="#" class="bg3">购物</a></li>
+			<li><a href="#" class="bg4">文化</a></li>
+			<li><a href="#" class="bg5">休闲</a></li>
+		</ul>
+		<h1><a href="#"><img src="img/logo.png" alt="100度享乐网"></a></h1>
+		<ul class="nav_2">
+			<li><a href="#" class="bg6">烧客空间</a></li>
+			<li><a href="#" class="bg7">知道分子</a></li>
+			<li><a href="#" class="bg8">白吃白拿</a></li>
+			<li><a href="#" class="bg9">烧客论坛</a></li>
+			<li><a href="#" class="bg10">企业俱乐部</a></li>
+		</ul>
+	</div>
+<!-- nav end -->
+
+<!-- search start -->
+	<div id="search" class="gradient">
+		<div class="bar"></div>
+	</div>
+<!-- search end -->
+
+<!-- content start 不清浮动，会导致footer上去 -->
+	<div class="content clear">
+	<!-- main start  main 向左浮动，若没有则导致 side 部分会另起一行 -->
+		<div class="main fl">	
+			<div class="main_wrap clear">
+				<div class="section fl"></div>  <!-- 子元素浮动，父元素清浮动，抱住子元素 -->
+				<div class="options fr">
+					<ul class="nav">
+						<li class="active fl"></li>
+						<li class="fr gradient"></li>
+					</ul>
+					<div class="con"></div>
+				</div>
+			</div>
+
+			<div class="main_ad">
+				<a href="#"><img src="img/ad/ad1.jpg" alt="main_ad"></a>
+			</div><!-- 广告1 -->
+
+			<div class="clear">
+				<div class="section fl"></div>  <!-- 子元素浮动，父元素清浮动，抱住子元素 -->
+				<div class="section fr"></div>
+			</div>
+			<div class="main_wrap clear">
+				<div class="options fl">
+					<ul class="nav">
+						<li class="active fl"></li>
+						<li class="fr gradient"></li>
+					</ul>
+					<div class="con"></div>
+				</div> 
+				<!-- 子元素浮动，父元素清浮动，抱住子元素 -->
+				<div class="section fr"></div>
+			</div>
+			
+			<div class="main_ad">
+				<a href="#"><img src="img/ad/ad1.jpg" alt="main_ad"></a>
+			</div><!-- 广告2 -->
+
+			<div class="main_wrap clear">
+				<div class="options fl">
+					<ul class="nav">
+						<li class="active fl"></li>
+						<li class="fr gradient"></li>
+					</ul>
+					<div class="con"></div>
+				</div>  
+				<!-- 子元素浮动，父元素清浮动，抱住子元素 -->
+				<div class="section fr"></div>
+			</div>
+			<div class="main_wrap clear">
+				<div class="section fl"></div>  <!-- 子元素浮动，父元素清浮动，抱住子元素 -->
+				<div class="section fr"></div>
+			</div>
+		</div>
+	<!-- main end -->
+
+	<!-- side start -->
+		<div class="side fr">
+			<div class="side_section"></div>
+
+			<div class="ad_border">
+				<a href="#"><img src="img/ad/ad2.jpg"></a>
+			</div>
+			<div class="side_ad">
+				<a href="#"><img src="img/ad/ad3.jpg"></a>
+			</div>
+
+			<div class="side_section"></div>
+			<div class="side_section"></div>
+			<div class="side_section"></div>
+			<div class="side_section"></div>
+			<div class="side_section"></div>
+		</div>
+	<!-- side end -->
+	</div>
+<!-- content end -->
+
+<!-- footer start -->
+	<div id="footer"></div>
+<!-- footer end -->
 </body>
 </html>
