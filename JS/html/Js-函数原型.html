@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数-原型对象</title>
+</head>
+<body>
+    <script>
+        function PersonOne(name, age, gender) {
+            this.name = name;
+            this.age= age;
+            this.gender= gender;
+            
+            this.sayName = function() {
+                alert("我是" + this.name);
+            };
+        }
+        var per1 = new PersonOne("孙悟空", 18, "男");
+        var per2 = new PersonOne("猪八戒", 19, "男");
+        per1.sayName();
+        per2.sayName();
+        alert(per1.sayName == per2.sayName);    // false
+
+        console.log(per1.__proto__ == PersonOne.prototype); // true
+// sayName方法是写在构造函数 Person 内部的，然后在两个实例中进行了调用。造成的结果是，构造函数每执行一次，就会给每个实例创建一个新的 sayName 方法。也就是说，每个实例的sayName都是唯一的。因此，最后一行代码的打印结果为false。   
+
+        function PersonTwo(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            
+            this.sayName = fun; //向对象中添加一个方法
+        }
+// 将sayName方法在全局作用域中定义
+// 将函数定义在全局作用域，污染了全局作用域的命名空间，而且定义在全局作用域中也很不安全
+        function fun() {
+            alert("Hello大家好，我是:" + this.name);
+        };
+
+// 原型prototype的概念
+// 1.所创建的每一个函数，解析器都会向函数中添加一个属性 prototype。这个属性对应着一个对象，这个对象就是我们所谓的原型对象。如果函数作为普通函数调用prototype没有任何作用，当函数以构造函数的形式调用时，它所创建的实例对象中都会有一个隐含的属性，指向该构造函数的原型，可以通过__proto__来访问该属性。
+// 2.原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，可以将对象中共有的内容，统一设置到原型对象中。
+
+        function PersonThree(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        var per3 = new PersonThree("vae", "26", "boy");
+        console.log("per3 = " + per3);  // per3 = [object Object]
+        console.log("per3 = " + per3.toString());   // per3 = [object Object]
+// 如果我们希望在输出对象时不输出[object Object]，可以为对象添加一个toString()方法
+
+// 重写 toString()方法：
+// 重写 Person 原型的toString方法。针对 Person 的所有实例生效
+        function PersonFour(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+
+        PersonFour.prototype.toString = function() {
+            return (
+                "PersonFour[name="+this.name+",age="+this.age+",gender="+this.gender+"]"
+            );
+        };
+        var Per4 = new PersonFour("小明", "女", "26岁");
+        var Per5 = new PersonFour("小红", "男", "26岁");
+
+        Per4.toString = function() {
+            return ("PersonFour[name="+this.name+",age="+this.age+",gender="+this.gender+"]");
+        };
+        // 直接在页面中打印一个对象时，输出的是对象的toString()方法的返回值
+        console.log("Per4= " + Per4);   // Per4= PersonFour[name=小明,age=女,gender=26岁]
+        console.log("Per5= " + Per5.toString());   // Per5= PersonFour[name=小红,age=男,gender=26岁]
+        console.log("Per5= " + Per5);   // Per5= PersonFour[name=小红,age=男,gender=26岁]
+
+
+    </script>
+</body>
+</html>

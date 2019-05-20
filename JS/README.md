@@ -3,7 +3,7 @@
 * ☞ 指的是调用当前方法 / 函数 的那个对象
                         
         function fn1 () {							
-		this	
+	       this	;
         }
         fn1();	// this => window
  
@@ -12,6 +12,10 @@
         oDiv.onclick = function () {
         	fn1();	// fn1() 里的this => window
         }
++ 1.以【函数的形式】调用时，[this永远都是window]()。比如fun();相当于window.fun();
++ 2.以【方法的形式】调用时，[this是调用方法的那个对象]()
++ 3.以【构造函数的形式】调用时，[this是新创建的那个对象]()
++ 4.以【使用call和apply】调用时，[this是指定的那个对象]()
 
 ### 关于函数返回值：
 * ☞ 函数名+括号： fn1() ==> return 后面的的值，函数返回值

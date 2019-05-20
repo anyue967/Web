@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数创建</title>
+</head>
+<body>
+    <script>
+        // 用函数声明创建函数
+        function fn1() {
+            return this;    // [object Window] 
+        };
+        alert(fn1());   // 调用函数:函数名()，指的是 fn1() 的返回值
+        alert(fn1);     // 返回函数对象，即 函数名 == 整个函数
+        
+        // 用函数表达式创建函数，其实就是将匿名函数赋值给一个变量。
+        var fn2 = function(a, b) {
+            return(a+b);
+        };
+        alert(fn2(1, 2));
+
+        // 定义fn方法
+        // fn3()：调用函数。相当于获取了函数的返回值，即执行函数内容返回结果
+        // fn3：函数对象，相当于直接获取了函数对象
+        function fn3(){
+            alert(1)
+        };
+        console.log(fn3) == console.log(function fn3(){alert(1)});
+        
+        // 关于 this 根据函数的调用方式的不同，this会指向不同的对象：【重要】
+    // 1.以【函数的形式】调用时，this永远都是window。比如fun();相当于window.fun();
+    // 2.以【方法的形式】调用时，this是调用方法的那个对象
+    // 3.以【构造函数的形式】调用时，this是新创建的那个对象
+    // 4.【使用call和apply】调用时，this是指定的那个对象
+
+    function fun1() {
+        alert(this);    
+        alert(this.name);   // 全局的name属性
+    };
+    var obj1 = {    // 方式一：对象字面量 创建自定义对象
+        name: "anyu",
+        sayName: fun1
+    };
+    var obj2 = {
+        name: "vae",
+        sayName: fun1
+    };
+    var name = "全局的name属性"; 
+
+    // 以函数形式调用，this是window
+    fun1();            // 弹出 [object Window]，全局的name属性
+    // 以方法的形式调用,this是调用方法的对象
+    obj1.sayName();     // 弹出 [object Object]，anyu
+
+    // 工厂模式 创建对象
+    function createPerson(name, age, gender) {
+            var obj = new Object();  //创建一个新的对象
+
+            obj.name = name;    //向对象中添加属性
+            obj.age = age;
+            obj.gender = gender;
+
+            obj.sayName = function() {  // 方法
+                console.log(this.name);
+            };
+            //将新的对象返回
+            return obj;
+        }
+        var obj2 = createPerson("猪八戒", 28, "男");
+        var obj3 = createPerson("白骨精", 16, "女");
+        var obj4 = createPerson("蜘蛛精", 18, "女");
+
+        // 利用构造函数 创建对象
+        // 创建一个构造函数
+        function Student(name) {
+            this.name = name;    // this指的是构造函数中的对象实例
+            this.sayHi = function () {
+                console.log(this.name + "厉害了");
+            }
+        }
+
+        var stu1 = new Student("smyh");
+        console.log(stu1);
+        stu1.sayHi();
+
+        var stu2 = new Student("vae");
+        console.log(stu2);
+        stu2.sayHi();
+    </script>
+</body>
+</html>
