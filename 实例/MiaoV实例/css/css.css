@@ -28,16 +28,16 @@ body{
 	margin: 0 auto;
 }
 
-/*设置top样式，background:水平+垂直-->
-上负下正，左负右正，顺正逆负*/
+/*设置top样式，background:水平+垂直：
+以左侧(X)，顶部(Y)为基准，靠近为负，远离为正，顺正逆负，即有了右正左负，上负下正
+*/
 .top_menu{
 	float: left;
 }
 .top_menu li{
 	float: left;
 	/*下14px*/
-	background: url(../img/top_ico.png) no-repeat 
-	right 14px;
+	background: url(../img/top_ico.png) no-repeat right 14px;
 	font-size: 13px; 
 	line-height: 30px;
 	padding-right: 18px; /*padding: 0 18px 0 15px;*/
@@ -70,8 +70,7 @@ body{
 }
 .top_bar .phone{
 	/*左上*/
-	background: url(../img/top_ico.png) no-repeat
-	8px -16px ;
+	background: url(../img/top_ico.png) no-repeat 8px -16px ;
 	padding: 0 38px;
 }
 .top_bar .help{

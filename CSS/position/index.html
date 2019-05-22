@@ -3,14 +3,47 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Position</title>
-	<link rel="stylesheet" type="text/css" href="CSS.css">
+	<style>
+		*{margin: 0; padding: 0;}
+		.box1{
+			width: 300px;
+			height: 300px;
+			background: red;
+			/* box2的定位父级 */
+			position: relative;
+		}
+		.box2{
+			width: 100px;
+			height: 100px;
+			background: green;
+			/* 脱离文档流， */
+			position: absolute;
+			/* 距离左边100px， */
+			left: 100px;	
+		}
+		.box3{
+			width: 200px;
+			height: 200px;
+			background: blue;
+			/* 位置的意思是 距离哪边的意思，靠近为负，远离为正 */
+			position: relative;
+			left: 100px;	
+		}
+		img{
+			margin-top: 50px;
+			width: 500px;
+			height: 400px;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	</style>
 </head>
 <body>
 
 <!--
 标准流里面的限制非常多，导致很多页面效果无法实现。如果我们现在就要并排、并且就要设置宽高，那该怎么办呢？办法是：移民！ 脱离文档流。
 
-再谈position:上负下正 左负右正
 	static: 默认值，即没有定位，元素出现在正常的文档流中。
 
 	fixed: 元素位置相对于浏览器窗口是固定位置，即使窗口滚动也不会动，与文档流无关，因
@@ -23,14 +56,16 @@
 有，则它的位置相对于<html>。绝对定位的元素和其它元素重叠。定位元素位置与文档流无关，因此不占据空间。
 	top描述，那么参考点就是页面的左上角，而不是浏览器的左上角；
 	bottom描述，那么参考点就是浏览器首屏窗口尺寸（好好理解“首屏”二字），对应的页面的左下角；
+	上负下正 左负右正
 
  -->
 	<div class="box1">Box1
-<!--		<div class="box2">Box2</div> -->
+		<div class="box2">Box2</div>
 	</div>
-	<br />
-	<div class="box2">Box2</div>
 
+	<br />
+
+	<div class="box3">Box3</div>
 	<img src="./absolute-bottom.png" alt="absolute-bottom">
 </body>
 </html>

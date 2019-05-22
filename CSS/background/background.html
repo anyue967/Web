@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>background</title>
+    <style>
+        .img{
+            width: 1300px;
+            height: 1000px;
+            /* 位置的意思是 距离哪边的意思，靠近为负，远离为正 */
+            background: url(./CSS-Box-Model.jpg) no-repeat #444444 160px 50px;
+        }
+    </style>
+</head>
+<body>
+    <p style="position: relative; top: 50px; width: 180px; background: greenyellow;">div 背景图向右动160px</p>
+    <div class="img"></div>
+</body>
+</html>

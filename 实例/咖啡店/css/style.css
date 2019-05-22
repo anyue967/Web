@@ -18,7 +18,8 @@ body{
 }
 #icon-list{
 	position: absolute; /*子层定位*/
-	top: 170px;
+	/* 以左侧(X)，顶部(Y)为基准，靠近为负，远离为正，顺正逆负 */
+	top: 180px;
 	right: 30px;
 	width: 130px;
 	height: 30px;
