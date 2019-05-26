@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation-动画</title>
+    <!-- 
+    先定义，再调用;
+    通过@keyframes定义动画；
+    将这段动画通过百分比，分割成多个节点；然后各节点中分别定义各属性；
+    在指定元素里，通过 animation 属性调用动画。
+    
+    定义动画：
+        @keyframes 动画名{
+            from{ 初始状态 }
+            to{ 结束状态 }
+        }
+     调用：
+        animation: 动画名称 持续时间;
+
+     animation: 定义的动画名称 持续时间  执行次数  是否反向  运动曲线 延迟执行。(infinite 表示无限次)
+        animation: move1 1s  alternate linear 3;
+        animation: move2 4s;
+    -->
+<style>
+    .sharkBox {
+        width: 509px;
+        height: 270px;
+        animation: sharkBoxRun 20s linear infinite;
+    }
+    .shark {
+        /*盒子的宽高是一帧的宽高，每一帧的尺寸是：宽 509 px、高 270 px。270 * 8 = 2160。让上面这张大图，在一秒内从 0px 的位置往上移动2160px，分成8步来移动*/
+        width: 509px;
+        height: 270px;
+        border: 1px solid #000;
+        margin: 100px auto;
+        /* 让图片一开始位于 0 px的位置 */
+        background: url("../HTML5-Base/img/shark.png") left top;
+        /* 一秒之内，从顶部移动到底部，分八帧， */ 
+        animation: sharkRun 1s steps(8) infinite;
+    }
+    @keyframes sharkRun {
+        0% {
+        }
+        /* 270 * 8 = 2160 */
+        100% {
+            background-position: left -2160px; /* 动画结束时，让图片位于最底部 */
+        }
+    }
+    @keyframes sharkBoxRun {
+        0% {
+            transform: translateX(-600px);
+        }
+
+        100% {
+            transform: translateX(3000px);
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="sharkBox">
+        <div class="shark"></div>
+    </div>
+</body>
+</html>

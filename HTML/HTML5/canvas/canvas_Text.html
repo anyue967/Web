@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>canvas Text</title>
+</head>
+<body>
+	<canvas id="canvas1" width="400" height="500"></canvas>
+	<script>
+		var c=document.getElementById("canvas1");
+		var ctx=c.getContext("2d");
+		ctx.font="bold 22px Tahoma";
+		ctx.textAlign="start";
+	    ctx.fillText("start", 10, 30);
+
+	    //	translate
+	    ctx.translate(100, 150);
+	    ctx.fillText("after translate", 0, 0);   <!--10 , 30-->
+	    ctx.rotate(1);
+	    ctx.fillText("after rotate", 0, 0);
+	    ctx.scale(1.5, 4);
+	    ctx.fillText("after scale", 0, 20);       <!--scale(x,y)-->
+	</script>
+</body>
+</html>

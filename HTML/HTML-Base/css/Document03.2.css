@@ -1,0 +1,81 @@
+/* 
+body{
+	background-image: url("../img/xx.jpg");
+	background-repeat: repeat-x;
+	background-repeat: repeat-y;
+    background-repeat: repeat;
+}
+p{
+	background-image: url("../img/xx.jpg");
+	background-repeat: inherit;
+	margin-top: 200px;
+	padding: 40px;
+}
+*/
+body{
+	background-image: url("../img/xx.jpg");
+	background-repeat: no-repeat;
+	/*background-attachment: fixed;*/
+	/*background-attachment: scroll;*/
+	background-attachment: inherit;
+}
+ol.lower-alpha{
+	list-style-type: lower-alpha;
+}
+ul.circle{
+	list-style-type: circle;
+}
+ul.sqaure{
+	list-style-type: square;
+}
+ul.listImage{
+	list-style-image: url("../img/xx.jpg");
+	list-style-position: inside;
+}
+ul.one{
+	/*list-style: square outside none;*/
+	list-style-type: square;
+	list-style-position: outside;
+	list-style-image: none;
+}
+table.one{
+	border-collapse: separate;
+	border-spacing: 20px 40px;
+}
+caption{
+	caption-side: top; 
+}
+table.three{
+	border-collapse: separate;
+	empty-cells: hide;
+}
+
+
+table.auto{
+	border-collapse: separate;
+	width: 100%
+	border: 1px solid gray;
+	table-layout: auto;
+}
+table.fixed{
+	border-collapse: separate;
+	width: 100%
+	border: 1px solid gray;
+	table-layout: fixed;
+}
+tr.X td{
+	border: 1px solid gray;
+}
+tr.Y td{
+	border: 1px solid gra
+}
+p.hover a:hover{
+	color: red;
+}
+p.link a:link{
+	text-decoration: none;
+}
+
+
+
+

@@ -45,6 +45,101 @@ body{
 	-ms-filter:"proid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#FFFFFF, endColorstr=#F8F8F8)";
 	+background: #F9F9F9;
 }
+.triangle_up, .triangle_down_red, .triangle_down_gray{
+	width: 0;
+	height: 0;
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	border-left: 4px solid transparent; 
+	border-right: 4px solid transparent;
+	_border-left: 4px solid #fff; 
+	_border-right: 4px solid #fff;
+}
+.triangle_up{
+	border-bottom: 4px solid #ca0309;
+}
+.triangle_down_red{
+	border-top: 4px solid #ca0309;
+}
+.triangle_down_gray{
+	border-top: 4px solid #c4bdbd;
+}
+
+.main_title{
+	height: 40px;
+	position: relative;
+	line-height: 40px;
+}
+.main_title sup{
+	font-size: 12px;
+	position: absolute;
+	top: -2px;
+}
+.main_title strong{
+	color: #cc0d13;
+	font-family: arial;
+	font-size: 12px;
+}
+.main_title span{
+	color: #000;
+}
+.main_title a{
+	position: absolute;
+	top: 15px;
+	right: 0;
+}
+.main_title h2{}
+
+.video_title{
+	height: 42px;
+	background: url("../img/video_bg.gif") no-repeat 105px 10px;
+	line-height: 42px;
+	font-size: 18px;
+	font-weight: normal;
+	font-family: arial;
+	color: #D90000;
+	position: relative;
+}
+.video_title sup{
+	font-family: '宋体';
+	position: absolute;
+	top: -10px;
+}
+.video{
+	margin-bottom: 13px;
+}
+.video_list{
+	padding-left: 75px;
+	height: 78px;
+	background: url("../img/video_bg.gif") no-repeat 3px -47px;;
+}
+.video_list li{
+	line-height: 20px;
+	text-indent: 14px;
+	color: #4d4d4d;
+	text-indent: 14px;
+	background: url("../img/dot.gif") no-repeat 5px center; 
+}
+.video_list li:hover{
+	text-decoration: underline;
+}
+.nav li{
+	text-align: center;
+}
+.nav li strong{
+	color: #cc0d13;
+	font-family: arial;
+	font-size: 12px;
+}
+.nav li span{
+	color: #000;
+}
+.nav .triangle_down_red, .nav .triangle_down_gray{
+	position: absolute;
+	top: 14px;
+	right: 16px;
+}
 /* end public css */
 
 /* layout */
@@ -101,8 +196,7 @@ body{
 	padding-bottom: 10px;
 }
 .section{
-	width: 318px;	/*350px*/
-	height: 200px;
+	width: 318px;	/*350px*/	
 	padding: 0 15px;
 /*	margin-bottom: 10px;
 	border: 1px solid #dbdbdb;
@@ -158,15 +252,18 @@ body{
 
 .options .nav{
 	height: 34px;
+	line-height: 34px;
 	position: relative;
 	z-index: 2;
 }
 .options .nav li{
 	width: 172px;
 	height: 33px;
+	line-height: 33px;
 	border: 1px solid #dbdbdb;
 	border-bottom: none;
 	border-radius: 6px 6px 0 0;
+	position: relative;
 }
 .options .nav .active{
 	width: 172px;
@@ -221,7 +318,7 @@ body{
 }
 #header .link a{
 	color: #666666; 
-	background: url(../img/header_link_bg.gif) no-repeat 0 3px;
+	background: url("../img/header_link_bg.gif") no-repeat 0 3px;
 	/*padding: 0 4px 20px;	上 左右 下*/
 	padding: 0 4px 0 20px;
 }
@@ -252,7 +349,7 @@ body{
 	width: 66px;
 	text-align: center;
 	padding-top: 50px;
-	background: url(../img/nav_bg.png) no-repeat;
+	background: url("../img/nav_bg.png") no-repeat;
 	color: #333;
 }
 #nav li a:hover{
@@ -347,7 +444,7 @@ body{
 #search .img{
 	width: 163px;
 	height: 122px;
-	background: url(../img/search_img.png) no-repeat;
+	background: url("../img/search_img.png") no-repeat;
 	position: absolute;
 	left: 32px;
 	top: -3px;
@@ -377,7 +474,7 @@ body{
 #search .btn{
 	width: 63px;
 	height: 26px;
-	background: url(../img/search_img.png) no-repeat -163px 0;
+	background: url("../img/search_img.png") no-repeat -163px 0;
 	border: none;
 	float: left;
 }
@@ -396,9 +493,50 @@ body{
 #search .key_text a:hover{
 	text-decoration: underline;
 }
-.triangle{
-	
+#search .update{
+	height: 30px;
+	width: 405px;
+	position: absolute;
+	left: 226px;
+	bottom: 0;
+	background: url("../img/search_img.png") no-repeat -226px 8px;
+}
+#search .wrap{
+	width: 336px;
+	height: 30px;
+	overflow: hidden;
+	position: relative;
+	left: 60px;
+}
+#search .update ul{
+	width: 336px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#search .update li{
+	height: 30px;
+	line-height: 30px;
+}
+#search .update a{
+	color: #000;
+}
+#search .update strong{
+	color: #D30703;
+	font-weight: normal;
+}
+#search .update span{
+	color: #999;
+
+}
+#search .update .triangle_up{
+	top: 8px;
+	right: 0px;
+}
+#search .update .triangle_down_red{
+	top: 18px;
+	right: 0px;
 }
 /*search end*/
-/* Items end */
 
+/* Items end */

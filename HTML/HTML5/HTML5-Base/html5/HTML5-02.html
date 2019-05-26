@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>HTML5-04</title>
+</head>
+<body>
+    <form>
+        <label>Your name:</label>
+        <input type="text" name="username" /> 
+                <br />
+                <br />
+        <label for="email">Your e-mail address:</label>
+        <input type="rext" name="email" placeholder="email@example.com" />
+                <br />
+                <br />
+        <label for="email">your e-mail address:</label>
+        <input type="text" name="email" autofocus />
+                <br />
+                <br />
+    </form>
+<hr color="black" />
+
+    <form autocomplete="off">
+        <label for="email">Your e-mail address:</label>
+        <input type="text" name="email" required />
+        <input type="submit" value="Submit" />
+                <br />
+                <br />
+        <input id="mysearch" name="searchitem" type="search" />
+                <br />
+                <br />
+        <input id="car" type="text" list="colors" />
+        <datalist id="colors">
+            <option value="Red">
+            <option value="Green">
+            <option value="Yellow">
+        </datalist>
+                <br />
+                <br />
+        <input id="email" name="email" type="email" placeholder="example@example.com" />
+        <input id="url" type="url" name="url" placeholder="example.com " />
+        <input id="tel" type="tel" name="tel" placeholder="0913-13992354515" />
+    </form>
+
+</body>
+</html>
