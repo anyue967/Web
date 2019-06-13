@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>善于使用父亲的padding，而不是儿子的margin</title>
+    <style>
+        div{
+            width:200px;
+            /* width:250px; */
+            height:200px;
+            background-color: brown;
+            /* padding-top:50px; */
+            border:1px solid #666666;   /* 设置border正常*/
+        }
+        .box1{
+            background-color: aqua;
+            width:100px;
+            /* width:150px; */
+            height:100px;
+            margin-top:50px;    /*子传递给父，一起向下50px */
+        }
+    </style>
+</head>
+<body>
+<!-- 善于使用父亲的padding，而不是儿子的margin
+     margin这个属性，本质上描述的是兄弟和兄弟之间的距离；最好不要用这个marign表达父子之间的距
+离。所以，如果要表达父子之间的距离，我们一定要善于使用父亲的padding，而不是儿子的margin。 
+-->
+    <div>
+        <div class="box1"></div>
+    </div>
+</body>
+</html>

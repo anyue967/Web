@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transform-2D / 3D</title>
+    <!-- 
+        rotate:
+            3D转换包括：rotateX、rotateY、rotateZ
+            浏览器的这个平面，是X轴、Y轴；垂直于浏览器的平面，是Z轴，所有的3d旋转，对着正方向去看，都是顺时针旋转 
+        translate:
+            transform: translateX(100px);    //沿着 X 轴移动
+            transform: translateY(360px);    //沿着 Y 轴移动
+            transform: translateZ(360px);    //沿着 Z 轴移动
+        透视：perspective:
+        用法：
+            作为一个属性，设置给父元素，作用于所有3D转换的子元素
+            作为 transform 属性的一个值，做用于元素自身。
+
+        transform-style: preserve-3d;     //让 子盒子 位于三维空间里
+        transform-style: flat;            //让子盒子位于此元素所在的平面内（子盒子被扁平化）
+    -->
+    <style>
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px dashed red;
+            margin: 100px auto;
+            position: relative;
+            border-radius: 50%;
+            /* 让子盒子保持3d效果*/
+            transform-style: preserve-3d;
+            /*transform:rotateX(30deg) rotateY(-30deg);*/
+            animation: gun 8s linear infinite;
+        }
+        .box > div {
+            width: 100%;
+            height: 100%;
+            position: absolute; /* 所有盒子都叠加在一起 */
+            text-align: center;
+            line-height: 250px;
+            font-size: 60px;
+            color: #daa520;
+        }
+        .left {
+            background-color: rgba(255, 0, 0, 0.3);
+            /* 变换中心*/
+            transform-origin: left;
+            /* 变换*/
+            transform: rotateY(90deg) translateX(-125px);
+        }
+        .right {
+            background: rgba(0, 0, 255, 0.3);
+            transform-origin: right;
+            /* 变换*/
+            transform: rotateY(90deg) translateX(125px);
+        }
+        .forward {
+            background: rgba(255, 255, 0, 0.3);
+            transform: translateZ(125px);
+        }
+        .back {
+            background: rgba(0, 255, 255, 0.3);
+            transform: translateZ(-125px);
+        }
+        .up {
+            background: rgba(255, 0, 255, 0.3);
+            transform: rotateX(90deg) translateZ(125px);
+        }
+        .down {
+            background: rgba(99, 66, 33, 0.3);
+            transform: rotateX(-90deg) translateZ(125px);
+        }
+        @keyframes gun {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="up">上</div>
+        <div class="down">下</div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="forward">前</div>
+        <div class="back">后</div>
+    </div>
+</body>
+</html>

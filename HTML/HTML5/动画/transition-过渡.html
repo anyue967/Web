@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition-过渡</title>
+    <!--  
+    transition 在元素首次渲染还未结束的情况下，是不会被触发的
+    transition-property: all; 如果希望所有的属性都发生过渡，就使用all。
+    transition-duration: 1s; 过渡的持续时间。
+    transition-timing-function: linear; 运动曲线。属性值可以是：
+
+    linear 线性
+    ease 减速
+    ease-in 加速
+    ease-out 减速
+    ease-in-out 先加速后减速
+    transition-delay: 1s; 过渡延迟。多长时间后再执行这个过渡动画。
+    
+    transition: 让哪些属性进行过度 过渡的持续时间 运动曲线 延迟时间;
+	transition: all 3s linear 0s; 
+-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eeeeee;
+        }
+
+        .content {
+            width: 900px;
+            height: 290px;
+            padding-left: 10px;
+            margin: 160px auto;
+        }
+
+        .item {
+            width: 273px;
+            height:273px;
+            text-align: center;
+            margin-right: 20px;
+            background-color: #FFF;
+            float: left;
+            position: relative;
+            top: 0;
+            overflow: hidden; /* 让溢出的内容隐藏起来。意思是让下方的橙色方形先躲起来 */
+            transition: all .5s; /* 从最初到鼠标悬停时的过渡 */
+        }
+
+        .item img {
+            border: 4px solid #ff6700;
+        }
+
+        .item .desc {
+            position: absolute;
+            left: 0;
+            bottom: -80px;
+            width: 100%;
+            height: 80px;
+            background-color: #ff6700;
+            transition: all .5s;
+        }
+
+        /* 鼠标悬停时，让 item 整体往上移动5px，且加一点阴影 */
+        .item:hover {
+            top: -5px;
+            box-shadow: 0 0 15px #AAA;
+        }
+
+        /* 鼠标悬停时，让下方的橙色方形现身 */
+        .item:hover .desc {
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="item">
+        <img src="../HTML5-Base/img/1.jpg" alt="">
+        <span class="desc"></span>
+    </div>
+
+    <div class="item">
+        <img src="../HTML5-Base/img/2.jpg" alt="">
+        <span class="desc"></span>
+    </div>
+    <div class="item">
+        <img src="../HTML5-Base/img/3.jpg" alt="">
+        <span class="desc"></span>
+    </div>
+</div>
+</body>
+</html>

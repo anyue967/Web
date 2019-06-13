@@ -42,6 +42,18 @@
   - ☞ 不支持宽高
   - ☞ 不支持上下的margin和padding
   - ☞ 代码换行被解析  
++ 使图片垂直居中：
+  ```
+    body:after{
+        content:"";
+        display:inline-block;
+        height:100%;
+        vertical-align:middle;
+    }
+    img{
+        vertical-align:middle;
+    }
+  ```
 ![元素分类图示](./CSS/元素分类.png)
 ![盒子模型图示](./CSS/盒子模型.jpg)
 
