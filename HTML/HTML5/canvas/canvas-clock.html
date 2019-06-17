@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas-clock</title>
+    <style>
+        *{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+			overflow: hidden;
+			background: lightgreen;
+	    }
+		#clock{
+			background: lightseagreen;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate3d(-50%,-50%,0);
+		}
+    </style>
+</head>
+<body>
+    <canvas id="clock" width="400" height="400"></canvas>
+</body>
+<script>
+    window.onload = function(){
+        var clock = document.querySelector("#clock");
+		if(clock.getContext){
+			var ctx = clock.getContext("2d");
+            setInterval(function(){
+                ctx.clearRect(0,0,clock.width,clock.height);
+                move();
+            },1000);
+            move();
+            function move() {
+                ctx.save();  // 初始化
+                ctx.lineWidth = 8;
+                ctx.strokeStyle = "black";
+                ctx.lineCap = "round";
+            // 设置中心
+                ctx.translate(200,200);
+            // 旋转坐标轴
+                ctx.rotate(-90*Math.PI/180);
+
+			    ctx.beginPath();
+            // 外层空心圆盘
+                ctx.save();
+                ctx.strokeStyle = "#325FA2";
+                ctx.beginPath();
+                ctx.arc(0,0,140,0,360*Math.PI/180);
+                ctx.stroke();
+                ctx.restore();
+            // 时针刻度
+                ctx.save();
+                ctx.beginPath();
+                for(var i=0; i<12; i++){
+                // 累加
+                    ctx.rotate(30*Math.PI/180);
+                    ctx.beginPath();
+                    ctx.moveTo(100,0);
+                    ctx.lineTo(120,0);
+                    ctx.stroke();
+                }
+                ctx.restore();
+        
+            // 分针刻度
+                ctx.save();
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                for(var i=0; i<60; i++){
+                    if(i%5 != 0){ 
+                        ctx.beginPath();
+                        ctx.moveTo(117,0);
+                        ctx.lineTo(120,0);
+                        ctx.stroke();
+                    }
+                    ctx.rotate(6*Math.PI/180);
+                }
+                ctx.restore();
+            // 时针、分针、秒针
+                var date = new Date();
+                var s = date.getSeconds();
+                var m = date.getMinutes() + s/60;
+                var h = date.getHours() + m/60; 
+                h = (h>12)?(h-12):h;
+
+            // 时针
+                ctx.save();
+                ctx.lineWidth = 14;
+                ctx.rotate(h*30*Math.PI/180);
+                ctx.beginPath();
+                ctx.moveTo(-20,0);
+                ctx.lineTo(80,0);
+                ctx.stroke();
+                ctx.restore();
+
+            // 分针
+                ctx.save();
+                ctx.lineWidth = 10;
+                ctx.rotate(m*6*Math.PI/180);
+                ctx.beginPath();
+                ctx.moveTo(-28,0);
+                ctx.lineTo(112,0);
+                ctx.stroke();
+                ctx.restore();
+        
+            // 秒针
+                ctx.save();
+                ctx.lineWidth = 6;
+                ctx.strokeStyle = "#D40000";
+                ctx.fillStyle = "#D40000";
+                ctx.rotate(s*6*Math.PI/180);
+                ctx.beginPath();
+                ctx.moveTo(-30,0);
+                ctx.lineTo(83,0);
+                ctx.stroke();
+            // 表座
+                ctx.beginPath();
+                ctx.arc(0,0,10,0,360*Math.PI/180);
+                ctx.fill();
+                ctx.stroke();
+            // 秒头
+                ctx.beginPath();
+                ctx.arc(96,0,10,0,360*Math.PI/180);
+                ctx.stroke();
+                ctx.restore();
+                ctx.restore();
+            }
+        };
+    }
+</script>
+<!-- 
+### 12、表盘
++ 初始化将圆心调整到画布的中间
+由于canvas中画圆与旋转所参照的坐标系于正常坐标系有出入将整个画布逆时针旋转90度
+初始化一些样式数据
+	ctx.lineWidth = 8;
+	ctx.strokeStyle = "black";
+	ctx.lineCap = "round";
++ 外层空心圆盘
+	圆盘颜色:#325FA2
+	圆盘宽度:14
+	圆盘半径:140	
++ 时针刻度
+	长度为20
+	宽度为8
+	外层空心圆盘与时针刻度之间的距离也为20	
++ 分针刻度
+	宽度为4
+	长度为3
++ 时针
+	宽度为14
+	圆心外溢出80 收20	
++ 分针
+	宽度为10
+	圆心外溢出112 收28
++ 秒针
+	颜色:D40000
+	宽度为6
+	圆心外溢出83 收30
+	中心实心圆盘
+		半径为10
+	秒针头
+		96 半径为10的空心圆
+        宽度为6 
+-->
+</html>
