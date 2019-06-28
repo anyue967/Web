@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>收集表单数据</title>
+    <script src="./react/react.development.js"></script>
+    <script src="./react/react-dom.development.js"></script>
+    <script src="./react/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+</body>
+<script type="text/babel">
+    class LoginForm extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                pwd: ''
+            }
+
+            // 这边绑定是必要的, 这样 `this` 才能在回调函数中使用
+            this.handleSubmit = this.handleSubmit.bind(this)
+            this.handleChange = this.handleChange.bind(this)
+        }
+/* ***************************************************************************** */
+        handleSubmit(event) {
+            /*
+            const comments = this.state.comments <==> const {commnets} = this.state // 这仅仅是简写
+
+            comments = {this.state.comments} 
+            comments = {comments}
+            // 箭头函数: x => x * x 相当于 function(x){return x*x}
+            //  this.setState((state, props) => ({
+                    counter: state.counter + props.increment
+                }));
+
+                this.setState(function(state, props) {
+                    return {
+                        counter: state.counter + props.increment
+                    };
+                });
+            */
+
+            // const {value} = this.nameInput
+            const name = this.nameInput.value
+
+            // const pwd = this.state.pwd
+            // 函数的参数如果是对象的成员，优先使用解构赋值
+            const {pwd} = this.state
+            alert(`准备提交的用户名${name}, 密码为${pwd}`)
+            // alert(name)
+            event.preventDefault()
+        }
+        handleChange(event) {
+            // read value
+            const pwd = event.target.value
+            // update value
+            this.setState({pwd})
+        }
+/* ***************************************************************** */       
+        render() {
+            return(
+               <form action="./test.php" onSubmit={this.handleSubmit}>&nbsp;
+                    用户名: <input type="text" ref={input =>this.nameInput = input} />&nbsp;
+                    密码: <input type="password" value={this.state.pwd} onChange={this.handleChange} />&nbsp;
+                    <input type="submit" value="Login" />
+               </form> 
+            )
+        }
+    }
+/* ********************************************************** */
+    ReactDOM.render(<LoginForm />, document.getElementById('example'))
+</script>
+</html>

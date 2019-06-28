@@ -7,6 +7,8 @@
     <title>Jqurey-函数&对象</title>
     <script src="./jquery-3.3.1.min.js"></script>
     <!--
+    jQuery:
+        核心: $/jQuery
     1. 作为一般函数调用: $(param)
         1). 参数为函数 : 当DOM加载完成后，执行此回调函数
         2). 参数为选择器字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象
@@ -18,7 +20,8 @@
     --> 
 
     <!--
-    1. jQuery对象是一个包含所有匹配的任意多个dom元素的伪数组对象
+    1. jQuery对象: 
+        核心函数$调用返回的是一个包含所有匹配的任意多个dom元素的伪数组对象(封装为 jQuery 对象, 实现调用jQuery方法)
     2. 基本行为
         size()/length: 包含的DOM元素个数
         [index]/get(index): 得到对应位置的DOM元素

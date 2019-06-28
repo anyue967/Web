@@ -21,7 +21,7 @@
 	position: relative;
 }
 /* > 缩小范围，只选择某个元素的子元素 */
-#head .headMain > .log{
+#head .headMain > .logo{
 	float: left;
 	margin-top: 30px;
 }
@@ -32,7 +32,8 @@
 #head .headMain > .nav .list > li{
 	float: left;
 	margin-left: 40px;
-	/* 元素非 fixed 定位: 
+	/* 
+	元素非 fixed 定位: 
 		父级有定位：参照父级
 		父级无定位：参照body
 	*/
