@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,16 +32,10 @@
             comments = {this.state.comments} 
             comments = {comments}
             // 箭头函数: x => x * x 相当于 function(x){return x*x}
-            //  this.setState((state, props) => ({
-                    counter: state.counter + props.increment
-                }));
-
-                this.setState(function(state, props) {
-                    return {
-                        counter: state.counter + props.increment
-                    };
-                });
+            // var f = ([参数]) => 表达式/{函数声明}
+            // handleSubmit(){} <==> handleSubmit = () => {}
             */
+
 
             // const {value} = this.nameInput
             const name = this.nameInput.value

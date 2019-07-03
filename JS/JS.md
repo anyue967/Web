@@ -1,24 +1,25 @@
 ## Js相关知识点，
 ### 关于this：
 *   ☞ 指的是调用当前方法 / 函数 的那个对象
-                        
-        function fn1 () {							
-            this;
-        }
-        fn1();	// this => window
+    ```               
+    function fn1 () {				
+        this;
+    }
+    fn1();	// this => window
  
-        oDiv.onclick = fn1;	  // this => oDiv，事件调用不加 ();
+    oDiv.onclick = fn1;	  // this => oDiv，事件调用不加 ();
         
-        oDiv.onclick = function () {
-        	fn1();	// fn1() 里的this => window
-        }
-+   1.以【函数的形式】调用时，[this永远都是window]()。比如fun();相当于window.fun();
-+   2.以【方法的形式】调用时，[this是调用方法的那个对象]()
-+   3.以【构造函数的形式】调用时，[this是新创建的那个对象]()
-+   4.以【使用call和apply】调用时，[this是指定的那个对象]()
+    oDiv.onclick = function () {
+        fn1();	// fn1() 里的this => window
+    }
+    ```
++   1.以【函数的形式】调用时, [this永远都是window]()。比如fun();相当于window.fun();
++   2.以【方法的形式】调用时, [this是调用方法的那个对象]()
++   3.以【构造函数的形式】调用时, [this是新创建的那个对象]()
++   4.以【使用call和apply】调用时, [this是指定的那个对象]()
 
 ### 关于函数返回值：
-*   ☞ 函数名+括号： fn1() ==> return 后面的的值，函数返回值
+*   ☞ 函数名+括号: fn1() ==> return 后面的的值，函数返回值
 *   ☞ 仅仅 是函数名调用：fn1 ==>函数体对象为参数，即整个函数代码
 *   ☞ 所有函数默认返回值：未定义
 *   ☞ return 之后任何代码都不执行
@@ -36,131 +37,26 @@
 *   组成：
     -   ☞ 方法：函数(过程、动态的)
     -   ☞ 属性：变量(状态、静态的)
-              
-            function People (name) {		// 构造			
-                this.name = name;		//  属性
-                this.showName = showName;
-            }							
-            function showName () {		// 方法
-                alert(this.name);
-            }
-            var p1 = new People('Jhon');
-            p1.showName();
-            =========================================
-            function People (name) {
-                this.name = name;
-            }							
-            People.prototype.showName = function () {
-                alert(this.name);
-            }
-            var p1 = new People('Jhon');
-            p1.showName();
-
-### 关于正则(规则)：
-```
-字符:\
-意义：对于字符，通常表示按字面意义，指出接着的字符为特殊字符，\不作解释
-例如：/b/匹配字符'b',通过在b 前面加一个反斜杠\，也就是/\b/，则该字符变成特殊字符，表示
-匹配一个单词的分界线。
-```
-
-*   ☞search：
-    -   `i` -- 忽略大小写，返回出现的位置
-
-*   ☞match、replace：
-    -   `\d、\d\d、\d+、g` -- 获取匹配 / 替换的项目
-        ```
-        1. 匹配一个数字，等价于[0-9]，/\d/或/[0-9]/匹配"B2 is the suite number."中的'2'
-        ```
-    -   `\b` --匹配一个单词的分界线，比如一个空格(不要与[\b]混淆)
-        ```
-        1. /\bn\w/匹配"noonday"中的'no'，/\wy\b/匹配"possibly yesterday."中的'ly'
-        ```
-    -   `\B` --匹配一个单词的非分界线
-        ```
-        1. /\w\Bn/匹配"noonday"中的'on'，/y\B\w/匹配"possibly yesterday."中的'ye'
-        ```
-    -   `\cX` --X是一个控制字符。匹配一个字符串的控制字符
-
-*   ☞`[xyz]`， 匹配任意字符 
+    ```          
+    function People (name) {  // 构造
+        this.name = name;	//  属性
+        this.showName = showName;
+    }							
+    function showName () {	// 方法
+        alert(this.name);
+    }
+    var p1 = new People('Jhon');
+    p1.showName();
+    =========================================
+    function People (name) {
+        this.name = name;
+    }							
+    People.prototype.showName = function () {
+        alert(this.name);
+    }
+    var p1 = new People('Jhon');
+    p1.showName();
     ```
-    1. /1[abc]2/`
-    2. [abcd]跟[a-c]一样,匹配"brisket"中的'b'和"ache"中的'c
-    3. [a-z]、[0-9]、[^a]
-    ```
-*   ☞`[^xyz]`，匹配除了列出的字符外的所有东西
-    ```
-    1. [^abc]和[^a-c]等价，它们最早匹配"brisket"中的'r'和"chop."中的'h'
-    ```
-
-*   ☞转义字符：
-    -   `.` （点）-- 匹配除换行符外的所有单个的字符 	
-        ```
-        1. /<[^<>]+>/g
-        2. /.n/匹配"nay, an apple is on the tree"中的'an'和'on'，但不匹配'nay' 
-        ```
-
-    -   `\d、\w 等价于 [a-z0-9_]、\s`
-        ```
-        1. \s --匹配一个单个white空格符，包括空格，tab，form feed，换行符，等价于[ \f\n\r\t\v]
-        ```
-
-    -   `\D 等价于 [^0-9]、\W 等价于 [^a-z0-9_]、\S`
-        ```
-        1. /\D/或/[^0-9]/匹配"B2 is the suite number."中的'B'
-        2. /\W/或者/[^$A-Za-z0-9_]/匹配"50%."中的'%'
-        3. \S --匹配除white空格符以外的一个单个的字符，等价于[^ \f\n\r\t\v]/\S/\w*匹配"foo bar."中的'foo'
-        ```
-        
-*   ☞量词(出现的次数)或者说是位数：
-    -   `{n,m}` -- 至少n次， 至多m次
-        ```
-        1. /a{1,3}/不匹配"cndy"中的任何字符，但匹配 "candy,"中的'a'，"caandy," 中的前面两个'a'和"caaaaaaandy"中前面的三个'a'，
-        2. 注意：即使"caaaaaaandy" 中有很多个'a'，但只匹配前面的三个'a'即"aaa"
-        ```
-    -   `{n, }` -- 至少n次，至多不限，匹配至少n个前面的字符
-        ```
-        1. /a{2,}不匹配"candy"中的'a'，但匹配"caandy"中的所有'a'和"caaaaaaandy."中的所有'a'
-        ```
-    -   `{,m}` -- 至少不限， 至多m次
-    -   `{n}` -- 正好n次,匹配前面的n个字符
-        ```
-        1. /a{2}/不匹配"candy,"中的'a',但匹配"caandy"中的所有'a'和"caaandy."中前面的两个'a'
-        ```
-    -   `*` -- {0,}，任意次
-        ```
-        1. /a*/意味匹配0个或多个a
-        2. 为了匹配字面上的*，在a前面加一个反斜杠；例如：/a\*/匹配'a*'
-        3. /bo*/匹配"A ghost booooed"中的'boooo'或"A bird warbled"中的'b'，但不匹配"A goat g
-        runted"中的任何字符。
-        ```
-    -   `+` -- {1,}，一次或任意次
-        ```
-        1. /a+/匹配"candy"中的'a'和"caaaaaaandy."中的所有'a'
-        ```
-    -   `?` -- {0,1}，零次或一次
-        ```
-        1. /e?le?/匹配"angel"中的'el'和"angle."中的'le'
-        ```
-    -   `字符x` -- 匹配'x'并记录匹配的值
-        ```
-        /(foo)/匹配和记录"foo bar."中的'foo'
-        匹配子串能被结果数组中的元素[1], ..., [n] 返回，或被RegExp对象的属性$1, ..., $9返回
-        ```
-    -   `字符x|y`
-        ```
-        1. /green|red/匹配"green apple"中的'green'和"red apple."中的'red'
-        ```
-    -   `字符[\b]` --匹配一个空格
-*   例子：
-    -   `^ --行首，$ --行尾`
-        ```
-        1. /^A/不匹配"an A,"中的'A'，但匹配"An A."中最前面的'A'
-        2. /t$/不匹配"eater"中的't'，但匹配"eat"中的't'
-        ```
-    -   `/^\w+@[a-z0-9]+\.[a-z]{2,4}$/` -- 邮箱验证
-    -   `/^\s*|\s*$/` -- 去掉首尾Space
-    -   `/[\u4e00-\u9fa5]/` -- 匹配中文
 
 ### 关于 DOM 对像.属性 操作的各种尺寸宽高：  
 *   ☞ **offset**
@@ -184,30 +80,31 @@
     -   `clientTop[Left]`   --> 元素(盒子)的[上   /   左border]()
 *   ☞ 总结：  
     -  区别1：宽高
-        
-            offsetWidth = width + padding + border  //  占位宽
-            offsetHeight = height + padding + border     //  占位高
+    ```    
+    offsetWidth = width + padding + border  //  占位宽
+    offsetHeight = height + padding + border     //  占位高
 
-            scrollWidth = 内容宽度（不包含border）   //  内容宽
-            scrollHeight = 内容高度（不包含border）  // 内容高
+    scrollWidth = 内容宽度（不包含border） //  内容宽
+    scrollHeight = 内容高度（不包含border） // 内容高
 
-            clientWidth = width + padding   //  可视区宽
-            clientHeight = height + padding //  可视区高
-
+    clientWidth = width + padding   //  可视区宽
+    clientHeight = height + padding //  可视区高
+    ```
     -   区别2：上左  
+    ```
+    offsetTop/offsetLeft：
+    调用者：任意元素。(盒子为主)
+    作用：距离父系盒子中带有定位的距离。
 
-            offsetTop/offsetLeft：
-            调用者：任意元素。(盒子为主)
-            作用：距离父系盒子中带有定位的距离。
+    scrollTop/scrollLeft：
+    调用者：document.body.scrollTop（window调用）(盒子也可以调用，但必须有滚动条)
+    作用：浏览器无法显示的部分（被卷去的部分）。
 
-            scrollTop/scrollLeft：
-            调用者：document.body.scrollTop（window调用）(盒子也可以调用，但必须有滚动条)
-            作用：浏览器无法显示的部分（被卷去的部分）。
-
-            clientY/clientX：
-            调用者：event   // 重要
-            作用：鼠标距离浏览器可视区域的距离（左、上）。
-* ![BOM](./img/10.BOM.png)  
+    clientY/clientX：
+    调用者：event   // 重要
+    作用：鼠标距离浏览器可视区域的距离（左、上）
+    ```
+* ![BOM](./img/BOM.png)  
 
 ### 获取元素的样式：
 * currentStyle -->该属性获取当前元素的样式，只有IE支持
@@ -236,6 +133,162 @@ function fn1(){
 }
 fn1();  //
 ```
+### 关于ES6
+### 变量的解构赋值, 给多个形参赋值
+```
+对象的解构赋值: 
+let obj = {username: 'anyue', age: 39};
+// let username = obj.username;
+let {username, age} = obj;
+
+数组的解构赋值:
+let arr = [1, 3, 5, 'abc', true];
+let [, , c, d, e] =arr;
+
+function foo({username, age}) {
+    console.log(username, age);
+}
+```
+
+### 模版字符串
+**必须用 `` 包含**  
+**变化的部分使用 {xxx} 定义**
+```
+let obj = {username: 'anyue', age: 39};
+let str = '我的名字是: ' + obj.username + ', 我今年的年龄是: ' + obj.age;
+str = `我的名字是: $(obj.username), 我今年的年龄是: {obj.age}`;
+
+```
+
+### 对象的简写方式
+```
+let username = 'anyue';
+let age = 39;
+let obj = {
+    // username: username,
+    // age: age,
+    // getName: function(){}
+
+    username,   // 省略同名的属性值
+    age,
+    getName() { // 省略方法的 function
+        return this.username;
+    }
+};
+```
+
+### 箭头函数
+不是调用的时候决定的, 而是在定义的时候处在的对像就是 它的this, 常规函数则相反
+箭头函数的`this`确定: 外层有函数, 则外层函数的this就是内部箭头函数的this, 若没有, 则this是window
+参数 => 语句/表达式
+```
+// let fun = function() {};
+let fun = () => console('我是箭头函数');
+fun();
+形参:
+  1.没有形参:
+    let fun1 = () => console.log('我是箭头函数');
+    fun1;
+  2.只有一个形参:
+    let fun2 = a => console.log(a); // 形参的()可以省略
+    fun2(aaa);
+  3.两个及以上:
+    let fun3 = (x, y) => console.log(x, y); 
+    fun3(25, 36);
+函数体:
+  1.函数体只有一条执行语句/表达式, {}可以省略, 会自动返回执行的结果:
+    let fun4 = (x, y) => x+y; // let fun1 = (x, y) => {return x+y};
+    console.log(fun4(25, 36));
+  2.函数体不只一条执行语句/表达式:
+    let fun5 = (x, y) => {
+        console.log(x, y);
+        return x + y;
+    }
+    console.log(fun5(25, 36));
+测试箭头函数的this:
+let btn1 = doucument.getElementById('btn1');
+let btn2 = doucument.getElementById('btn2');
+
+btn1.onclick = function() {alert(this)};    // this = btn1
+btn2.onclick = () => {alert(this)}  // this = Window
+
+let obj = {
+    name: '箭头函数',
+    getName: function(){
+        btn2.onclick = () => {alert(this)};
+    }
+}
+obj.getName();  // this = obj
+```
+### 三点运算符 && 数组扩展方法 
+```
+function foo(...value){
+    console.log(value);
+    value.foreach(function(item, index){
+        console.log(item, index);
+    })
+}
+
+var arr = [2, 4, 3, 1, 2, 6, 5, 4];
+console.log(arr.indexOf(4));    // 1 得到值在数组中的第一个下标
+
+console.log(arr.lastIndexOf(4));    // 7 
+
+arr.forEach(function(item, index) {
+    console.log(item, index);   // 遍历数组
+});
+
+var arr1 = arr.map(function(item, index) {
+    return item+10;
+});
+console.log(arr1, arr);  // 遍历数组返回新的数组, 返回加工之后的值
+
+var arr2 = arr.filter(function(item, index) {
+    return item > 3;
+})
+console.log(arr2, arr); // 4, 6, 5, 4
+```
+
+### Promise 对象
+```
+function getNews(url) {
+    let promise = new Promise((resolve, reject) => {
+        // 状态: 初始化
+
+        // 执行异步任务
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if(xmlHttp.readyState ===4){
+                if(xmlHttp.status == 200){
+                    console.log(xmlHttp.reponseText);
+                    resolve(xmlHttp.reponseText);  // 修改
+            }else{
+                reject('暂时没有数据');
+                }
+            }
+        };
+        xmlHttp.open('GET', url);
+        xmlHttp.send();
+    })
+    return promise;
+}
+getNews('http://localhost:1080/news?id=2')
+    .then((data) => {
+        console.log(data);
+        let commentsUrl = JSON.parse(data).commentsUrl;
+        let url = 'http://localhost:1080' + commentsUrl;
+        return getNews(url);
+    }, (error) =>{
+        console.log(error);
+    })
+```
+
+
+
+
+
+
+
 
 
 
