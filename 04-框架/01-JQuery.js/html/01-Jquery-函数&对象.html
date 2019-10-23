@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jqurey-函数&对象</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <!--
+    jQuery:
+        核心: $/jQuery
+    1. 作为一般函数调用: $(param)
+        1). 参数为函数 : 当DOM加载完成后，执行此回调函数
+        2). 参数为选择器字符串: 查找所有匹配的标签, 并将它们封装成jQuery对象
+        3). 参数为DOM对象: 将dom对象封装成jQuery对象
+        4). 参数为html标签字符串 (用得少): 创建标签对象并封装成jQuery对象
+    2. 作为对象使用: $.xxx()
+        1). $.each() : 隐式遍历数组
+        2). $.trim() : 去除两端的空格
+    -->
+
+    <!--
+    1. jQuery对象: 
+        核心函数$调用返回的是一个包含所有匹配的任意多个dom元素的伪数组对象(封装为 jQuery 对象, 实现调用jQuery方法)
+    2. 基本行为
+        size()/length: 包含的DOM元素个数
+        [index]/get(index): 得到对应位置的DOM元素
+        each(): 遍历包含的所有DOM元素
+        index(): 得到在所在兄弟元素中的下标
+    -->
+
+    <!-- 
+        JSON:字符串
+            '{"":"", "":""}'  JSON对象 {}
+            '[{"":"", "":""}. {"":"", "":""}]' JSON数组 [{}]
+        JSON.parse(jsonString)   json字符串:js对象/数组,返回JS对象
+        JSON.stringify(jsObj/jsArr)  js对象/数组:json字符串
+    -->
+</head>
+
+<body>
+    <div>
+        <button id="btn1">JQuery 测试1</button>
+        <button id="btn2">JQuery 测试2</button>
+        <br>
+        <input type="text" name="msg1"><br>
+        <input type="text" name="msg2"><br>
+    </div>
+</body>
+<script>
+    // 作为一般函数调用 参数是函数、字符串、DOM对象
+    $(function() { // 绑定文档加载完成的监听
+            $('#btn1').click(function() { // 绑定点击事件监听
+                // alert(this.innerHTML);
+                alert($(this).html());
+                // 作为
+                $('<input type="text" name="msg3"/><br/>').appendTo('div');
+            })
+        })
+        // 作为对象使用
+    var arr = [1, 2, 3, 4];
+    $.each(arr, function(index, item) {
+        console.log(index, item);
+    })
+    var str = ' my anxiaohong ';
+    console.log('---' + str.trim() + '---');
+    console.log($.trim(str));
+
+    // .size()自1.8版本废弃，请使用.length代替
+    var $buttons = $('button');
+    console.log($buttons.length);
+
+    console.log($buttons[1].innerHTML, $buttons.get(1).innerHTML);
+
+    $buttons.each(function() {
+        console.log(this.innerHTML);
+    })
+    console.log($('#btn2').index());
+
+    console.log($buttons instanceof Array); // false
+
+    var weiArr = {};
+    weiArr.length = 0;
+    weiArr[0] = 'xingyue';
+    weiArr.length = 1;
+    weiArr[1] = 123;
+    weiArr.length = 2;
+    for (var i = 0; i < weiArr.length; i++) {
+        var obj = weiArr[i];
+        console.log(i, obj);
+    }
+    console.log(weiArr.forEach, $buttons.forEach);
+
+    // json对象: {}===>JS对象
+    var json1 = '{"name":"Tom", "age":12}';
+    console.log($.parseJSON(json1));
+
+    // json数组: []===>JS数组
+    var json2 = '[{"name":"Tom", "age":12},{"name":"Jack", "age":13}]';
+    console.log($.parseJSON(json2));
+</script>
+
+</html>

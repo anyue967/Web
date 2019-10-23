@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>模板语法</title>
+	<style>
+		.class1{
+			background: #444;
+			color: #eee;
+		}
+	</style>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- v-html 指令用于输出 html 代码 -->
+		<div v-html='message'></div>
+
+		<!-- HTML 属性中的值应使用 v-bind 指令 -->
+		<label for="r1">修改颜色</label>
+		<input type="checkbox" v-model="use" id="r1">
+		<br>
+		<div v-bind:class="{'class1': use}">
+			<span>v-bind:class 指令</span>
+		</div>
+		<br>
+
+		<!-- 表达式 -->
+		<div>
+			{{ 5 + 5 }}<br>
+			{{ ok ? 'YES' : 'NO' }}<br>
+			{{ message.split('').reverse().join('') }}
+			<div v-bind:id="'list-' + id">Hello</div>
+		</div>
+		<br>
+
+		<p v-if="seen">Hi，被你发现了</p>
+		<template v-if="ok">
+			<h2>Hello My Baby</h2>
+			<p>过程最重要</p>
+		</template>
+		<br>
+			
+	</div>
+
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				message: '<h2>npm install -g cnpm --registry=https://registry.npm.taobao.org</h2>',
+				use: false,
+				id: 1,
+				seen: true,
+				ok: true
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,42 +1,63 @@
 ## Js相关知识点，
 ### 关于this：
-*   ☞ 指的是调用当前方法 / 函数 的那个对象
-    ```               
-    function fn1 () {				
-        this;
-    }
-    fn1();	// this => window
- 
-    oDiv.onclick = fn1;	  // this => oDiv，事件调用不加 ();
-        
-    oDiv.onclick = function () {
-        fn1();	// fn1() 里的this => window
-    }
+* ☞ 拥有不同的值，具体取决于它的使用位置
+    ```  
+    1. 方法中的this, 指调用方法的对象:
+        var person = {
+            firstName: "Bill",
+            lastName : "Gates",
+            id     : 678,
+            fullName : function() {
+                return this.firstName + " " + this.lastName + alert(this);  ==> [object Object]
+            }
+        };
+        document.getElementById("demo").innerHTML = person.fullName();
+    
+    2. 单独的this, 指全局对象[object Window]:
+        var x = this;   ==>[object Window]
+        document.getElementById("demo").innerHTML = x;
+
+    3. 函数中的this, 指全局对象[object Window]
+       JS中函数的拥有者默认绑定 this, 严格模式(undefined)
+        document.getElementById("demo").innerHTML = myFunction();
+        function myFunction() {
+            return this;    ==>[object Window]
+        }
+
+    4. 事件处理中的this, 指接收此事件的 HTML 元素
+        <button onclick="this.style.display='none'; alert(this)">单击来删除我！</button>  ==>[object HTMLButtonElement]
     ```
-+   1.以【函数的形式】调用时, [this永远都是window]()。比如fun();相当于window.fun();
-+   2.以【方法的形式】调用时, [this是调用方法的那个对象]()
-+   3.以【构造函数的形式】调用时, [this是新创建的那个对象]()
-+   4.以【使用call和apply】调用时, [this是指定的那个对象]()
++ 以函数的形式调用时, this永远都是window。比如fun();相当于window.fun();
++ 以方法的形式调用时, this是调用方法的那个对象
++ 以构造函数的形式调用时, this是新创建的那个对象
++ call() 和 apply() 方法可以将 this 引用到任何对象
+
+### js调用函数时加括号与不加括号的区别
++ 函数名其实就是指向函数体的指针 
++ 不加括号，可以认为是查看该函数的完整信息， 
++ 不加括号传参，相当于传入函数整体 
++ 加括号 表示`立即调用（执行）这个函数里面的代码`（花括号部分的代码）
++ toCelsius 引用的是`函数对象`，而 toCelsius() 引用的是`函数结果`
 
 ### 关于函数返回值：
-*   ☞ 函数名+括号: fn1() ==> return 后面的的值，函数返回值
-*   ☞ 仅仅 是函数名调用：fn1 ==>函数体对象为参数，即整个函数代码
-*   ☞ 所有函数默认返回值：未定义
-*   ☞ return 之后任何代码都不执行
+* ☞ 函数名+括号: fn1() ==> return 后面的的值，函数返回值
+* ☞ 仅仅 是函数名调用：fn1 ==>函数体对象为参数，即整个函数代码
+* ☞ 所有函数默认返回值：未定义
+* ☞ return 之后任何代码都不执行
 
 ### 关于定时器：
-*   ☞ var timer = setInterval(函数名， 毫秒);
-    -   clearInterval(timer);	// 重复执行
-    -   clearTimout(timer);	// 执行一次
+* ☞ var timer = setInterval(函数名, 毫秒);
+  - clearInterval(timer);	// 重复执行
+  - clearTimout(timer);	// 执行一次
 
 ### 关于OOP：
-*   特点：
-    -   ☞ 抽象：抓问题核心
-   -    ☞ 封装：不考虑内部实现原理，只考虑功能使用
-   -    ☞ 继承：从已有对象，继承出新的对象，多重继承，多态
-*   组成：
-    -   ☞ 方法：函数(过程、动态的)
-    -   ☞ 属性：变量(状态、静态的)
+* 特点：
+  - ☞ 抽象：抓问题核心
+  - ☞ 封装：不考虑内部实现原理，只考虑功能使用
+  - ☞ 继承：从已有对象，继承出新的对象，多重继承，多态
+* 组成：
+  - ☞ 方法：函数(过程、动态的)
+  - ☞ 属性：变量(状态、静态的)
     ```          
     function People (name) {  // 构造
         this.name = name;	//  属性
@@ -59,27 +80,31 @@
     ```
 
 ### 关于 DOM 对像.属性 操作的各种尺寸宽高：  
-*   ☞ **offset**
-    -  `offsetWidth[Height]`   --> 元素(盒子)的 [宽高+padding+borde]() 
-    -  `offsetLeft[Top]`   --> 元素(盒子)的[父级带有定位属性，左侧(顶部)距离数字]()，**从父亲的 padding 开始算，父亲的 border 不算**；若没有定位，则以body为准  
-*   ☞ **offsetParent**
-    - 带有定位的父级元素节点，若[没有定位，返回结果为body]()；若有[返回最近的父级元素]()  
-	- 本身定位为`fixed`
-		* offsetParent:null (非火狐)
-		* offsetParent:body（火狐）
-	- 本身定位不为`fixed`
-		* 父级没有定位：offsetParent:body
-		* 父级有定位：offsetParent:定位父级
-*   ☞ **scroll**  
-    - `scrollWidth[Height]` --> 元素(盒子)的宽高，[不包括border+margin]()，`scrollWidth[Height]=width[Height]+padding`  
+* ☞ **offset**
+  - `offsetWidth[Height]`   --> 元素(盒子)的 [宽高+padding+border]() 
+  - `offsetLeft[Top]`   --> 元素(盒子)的[父级带有定位属性，左侧(顶部)距离数字]()，**从父亲的 padding 开始算，父亲的 border 不算**；若没有定位，则以body为准  
+
+* ☞ **offsetParent**
+  - 带有定位的父级元素节点，若[没有定位，返回结果为body]()；若有[返回最近的父级元素]()  
+  - 本身定位为`fixed`
+    * offsetParent:null (非火狐)
+	* offsetParent:body（火狐）
+  - 本身定位不为`fixed`
+    * 父级没有定位：offsetParent:body
+	* 父级有定位：offsetParent:定位父级
+
+* ☞ **scroll**  
+  - `scrollWidth[Height]` --> 元素(盒子)的宽高，[不包括border+margin]()，`scrollWidth[Height]=width[Height]+padding`  
     > scrollHeight有一个特点：如果文字超出了盒子，高度为内容的高（包括超出的内容）；不超出，则是盒子本身高度。
-    - `scrollTop[Left]` --> 网页被卷去的头部与左部的距离，[兼容写法：]() `window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop`
-*   ☞ **client**  
-    -   `clientWidth[Height]`   --> 元素(盒子)的宽高，[padding + width[height]]()，调用body / html 为获取网页可视区的宽高
-    -   `clientX[]Y]`   --> 鼠标距离可视区[左侧  /   上侧的距离]()
-    -   `clientTop[Left]`   --> 元素(盒子)的[上   /   左border]()
-*   ☞ 总结：  
-    -  区别1：宽高
+  - `scrollTop[Left]` --> 网页被卷去的头部与左部的距离，[兼容写法：]() `window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop`
+
+* ☞ **client**  
+  - `clientWidth[Height]`   --> 元素(盒子)的宽高，[padding + width[height]]()，调用body / html 为获取网页可视区的宽高
+  - `clientX[]Y]`   --> 鼠标距离可视区[左侧  /   上侧的距离]()
+  - `clientTop[Left]`   --> 元素(盒子)的[上   /   左border]()
+
+* ☞ 总结：  
+  - 区别1：宽高
     ```    
     offsetWidth = width + padding + border  //  占位宽
     offsetHeight = height + padding + border     //  占位高
@@ -90,7 +115,8 @@
     clientWidth = width + padding   //  可视区宽
     clientHeight = height + padding //  可视区高
     ```
-    -   区别2：上左  
+    
+  - 区别2：上左  
     ```
     offsetTop/offsetLeft：
     调用者：任意元素。(盒子为主)
@@ -124,15 +150,37 @@ showMsg.innerHTML = "x = "+x + ", y = "+y; // x, 均为变量
 * 嵌套的内部函数引用了嵌套的外部函数的变量，就产生了闭包
 * 闭包 存在于嵌套的内部函数中
 ```
-function fn1(){
+-------------------------------------
+function foo() {
     var a = 2;
-    var b = 'abc';
-    function fn2(){ // 执行函数定义产生闭包(不用调用内部函数)
-        console.log(a);
+    function bar() {
+        alert(a);
     }
+    return bar;
 }
-fn1();  //
+var baz = foo();
+baz();  // 2
+------------------------------------
+<h1>JavaScript 闭包</h1>
+<p>使用局部变量计数。</p>
+<button type="button" onclick="myFunction()">计数！</button>
+<p id="demo">0</p>
+
+<script>
+var add = function() {
+  var counter = 0;
+  return function() {
+      counter += 1; 
+      return counter;
+    }
+}();
+
+function myFunction(){
+  document.getElementById("demo").innerHTML = add();
+}
+</script>
 ```
+
 ### 关于ES6
 ### 变量的解构赋值, 给多个形参赋值
 ```

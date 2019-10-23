@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>幽灵按钮</title>
+    <link rel="stylesheet" href="../css/youling.css" type="text/css" />
+</head>
+
+<body>
+    <div class="box">
+        <div class="link link-miss">
+            <span class="icon"></span>
+            <a href="#" class="button" data-text="My mission is clear">
+                <span class="line line-top"></span>
+                <span class="line line-left"></span>
+                <span class="line line-right"></span>
+                <span class="line line-bottom"></span> MISSION
+            </a>
+        </div>
+        <div class="link link-play">
+            <span class="icon"></span>
+            <a href="#" class="button" data-text="This is my playground">
+                <span class="line line-top"></span>
+                <span class="line line-left"></span>
+                <span class="line line-right"></span>
+                <span class="line line-bottom"></span> PLAY
+            </a>
+        </div>
+        <div class="link link-touch">
+            <span class="icon"></span>
+            <a href="#" class="button" data-text="Let's do something together">
+                <span class="line line-top"></span>
+                <span class="line line-left"></span>
+                <span class="line line-right"></span>
+                <span class="line line-bottom"></span> TOUCH
+            </a>
+        </div>
+        <div class="tooltip">
+            <em></em>
+            <span></span>
+        </div>
+    </div>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".button").hover(function() {
+                var titletext = $(this).attr("data-text");
+                // console.log(titletext);
+                $(".tooltip em").text(titletext);
+                // 动态获取内容并添加
+                // 获取距离左边位置
+                var leftLoc = $(this).offset().left;
+                var addLeft = ($(".tooltip").outerWidth() - $(this).outerWidth()) / 2;
+
+                $(".tooltip").css({
+                    left: leftLoc - addLeft,
+                    top: 140
+                }).animate({
+                    top: 195,
+                    opacity: 1
+                }, 350)
+            }, function() {
+
+            })
+        })
+    </script>
+</body>
+
+</html>
